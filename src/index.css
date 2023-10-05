@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    font-family: 'Raleway', sans-serif;
+    @apply 
+        
+        /** Background-image: linear-gradient(to top) **/
+        bg-gradient-to-t 
+        from-slate-500 
+        to-blue-500 
+        text-white 
+        
+        /** background-attachment: fixed **/
+        bg-fixed /* Questo effetto può essere utilizzato per creare sfondi accattivanti e parallasse, 
+                    dove il contenuto scorre sopra un'immagine di sfondo che sembra rimanere in posizione */
+        
+        /** height: 100% **/
+        h-full
+}
+
+.title {
+    @apply
+
+        /** font-weight: 800 **/
+        font-extrabold 
+        
+        /** margin-top: 0.75rem **/
+        /** margin-bottom: 0.75rem **/
+        my-3 /* 0.75rem equivalgono a 12 pixel */
+
+        /** font-size: 2rem **/
+        /* Le parentesi quadre servono a specificare delle unità di misura custom che tailwind non ha al suo interno */
+        text-[2rem] /* Oppure se non volessimo utilizzare le unità di misura custom possiamo utilizzare quello che ci fornisce tailwindcss */
+        /* text-2xl => Ovviamente 2xl fa riferimento a una misura interna del componente, che non è di 2rem */ 
+        
+        /** text-align: center **/
+        text-center
+        
+        
+        /** MEDIA QUERY - RESPONSIVE **/
+        /*
+        
+        BREAKPOINTS
+            sm => 640px
+            md => 768px
+            lg => 1024px
+            xl => 1280px
+            2xl => 1536px
+
+        */
+        /* 2xl indica l'unità di misura extra large, la proprietà font-size: 18rem sarà applicata solo quando lo schermo raggiunge 2xl  */
+        /* 2xl => 1536px */
+        /* Tutte le proprietà con 2xl davanti verranno applicate nel momento in cui la larghezza dello schermo diventa inferiore a 1536px */
+        2xl:text-[18rem] 
+
+        /** position: fixed **/
+        /* Con position: fixed sappiamo il contenuto che ha questa proprietà rimarrà fissato sulla pagina */
+        2xl:fixed 
+
+        /** bottom: 0 **/
+        2xl:bottom-0
+
+        /** z-index: 0 **/
+        2xl:z-0 
+
+        /** transform: rotate(270deg) **/
+        2xl:rotate-[270deg] 
+        
+        /** width: 24rem **/
+        2xl:w-96 
+
+        /** left: -3rem **/
+        /* Quando si scrive il dash davanti al valore indica un unità di misura negativa
+            ES: -left-4, in questo modo gli passi un unità di misura negativa */
+        2xl:-left-12 
+        
+        /** opacity: 0.3 **/
+        2xl:opacity-30 
+
+        /** pointer-events: none **/
+        /* Con pointer-events tracciamo gli eventi del mouse, settandolo a none non scatterà nessun evento lato css con il mouse  */
+        2xl:pointer-events-none
+}
+
+.page {
+    @apply
+
+        /** max-width: 1024px **/
+        max-w-screen-lg
+
+        /** margin-left: auto;
+          **margin-right: auto; */
+        mx-auto
+        
+        /** padding-top: 6rem **/
+        pt-24
+
+        /** padding-left: 0.75rem
+          **padding-right: 0.75rem **/
+        px-3
+}
+
+.page-sm {
+    @apply
+
+        /** max-width: 1024px **/
+        max-w-screen-lg
+
+        /** margin-left: auto;
+          **margin-right: auto; */
+        mx-auto
+}
+
+
+/* FORMS */
+textarea,
+input[type="text"], 
+input[type="password"], 
+input[type="number"], 
+input[type="email"] {
+    @apply
+        text-black
+}
+
+textarea.error,
+input[type="text"].error, 
+input[type="password"].error, 
+input[type="number"].error, 
+input[type="email"].error {
+    @apply
+        bg-red-300
+}
+
+
+/* BUTTONS */
+.btn {
+    @apply
+        px-5
+        py-2
+
+        /** border-radius: 9999px **/
+        rounded-full
+        m-1
+        font-bold
+        text-sm
+        text-center
+
+        /** DISABLED **/
+        /*
+        
+        La bellezza di tailwind, e anche data dal fatto che possiamo utilizzare una classe, per esempio btn
+        per accedere all'elemento html e controllare se ha una property disabled, e nel caso ci sia, possiamo
+        concatenare uno stile, per esempio opacity: 0.3, come nell'esempio sottostante
+        
+        */
+        disabled:opacity-30
+
+        /* 
+        
+        transiction ci permette di settare un animazione, quindi se ci sarà un bottone, che al suo interno 
+        contiene una classe dove viene fatto un hover, con transition potremo impostare il time, la cubic-bezier ecc..
+        Ovviamente se fate l'hover sulla keyword transition, che sta a riga (165) puoi vedere che css e contenuto al suo interno
+
+        */
+        transition
+}
+
+.btn.dark {
+    @apply
+        bg-slate-700
+
+        /** HOVER **/
+        /* 
+        
+        Se vogliamo fare l'hover su un elemento, possiamo fare come in questo esempio
+        Gli impostiamo un colore di base, che all'hover cambia => hover:bg-slate-900
+
+        */
+        hover:bg-slate-900
+        text-white
+}
+
+.btn.danger {
+    @apply
+        bg-red-400
+        hover:bg-red-500
+        text-white
+}
+
+.btn.primary {
+    @apply
+        bg-white
+        hover:bg-sky-200
+        text-black
+}
+
+.btn.accent {
+    @apply
+        bg-pink-500
+        hover:bg-pink-600
+        text-white
+}
+
+.btn.success {
+    @apply
+        bg-green-500
+        hover:bg-green-700
+        text-white
+}
+
+.btn.outline {
+    @apply
+        
+        /** border: 1px **/
+        /* Per modificare la grandezza del bordo possiamo fare così """border-[unità di misura custom, es: 10px, 2rem ecc..]""" */
+        border
+        border-white
+}
+
+.btn.lg {
+    @apply
+
+        /**font-size: 1.5rem
+         **line-height: 2rem**/
+        text-2xl
+}
+
+
+/* TABLES */
+.table-auto th,
+.table-auto td {
+    @apply
+        border-b 
+        border-b-blue-500 
+        py-4 
+        px-2
+}
+
+.table-auto.hover tr:hover {
+    @apply
+        bg-blue-500
+        /* transition */
+
+        /** transition-duration: 200ms **/
+        duration-200
+}
