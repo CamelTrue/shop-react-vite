@@ -1,4 +1,4 @@
-import { useCartPanel } from '@/services/cart';
+import { selectTotalCartItems, useCart, useCartPanel } from '@/services/cart';
 import logo from '../../../assets/laptop.png'
 import { NavLink } from 'react-router-dom'
 import { CartPanel } from './CartPanel';
@@ -11,6 +11,7 @@ export const NavBar = () => {
 
     const isCartPanelOpened = useCartPanel(state => state.open)
     const toggleCartPanel = useCartPanel(state => state.toggle)
+    const totalCartItems = useCart(selectTotalCartItems)
 
     return (
         <div className='fixed top-0 left-0 right-0 shadow-2xl z-10'>
@@ -28,7 +29,7 @@ export const NavBar = () => {
                         className='btn accent lg' 
                         onClick={toggleCartPanel}>
                         
-                        Cart: 0
+                        Cart: { totalCartItems }
                     </button>
                 </div>
 
