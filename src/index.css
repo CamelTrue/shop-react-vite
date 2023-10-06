@@ -154,7 +154,7 @@ input[type="email"].error {
         per accedere all'elemento html e controllare se ha una property disabled, e nel caso ci sia, possiamo
         concatenare uno stile, per esempio opacity: 0.3, come nell'esempio sottostante
         
-        */
+        */ 
         disabled:opacity-30
 
         /* 
